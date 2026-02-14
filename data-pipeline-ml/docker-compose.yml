@@ -1,0 +1,41 @@
+services:
+  db:
+    image: postgres:16
+    container_name: pipeline_ml_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: pipelineml
+    ports:
+      - "5434:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./src/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  api:
+    build: .
+    container_name: pipeline_ml_api
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgresql+psycopg://postgres:postgres@db:5432/pipelineml
+      MODEL_PATH: trained_model/model.pkl
+    ports:
+      - "8001:8000"
+    depends_on:
+      - db
+    command: uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload
+
+  dashboard:
+    build: .
+    container_name: pipeline_ml_dashboard
+    env_file:
+      - .env
+    ports:
+      - "8502:8501"
+    depends_on:
+      - api
+    command: streamlit run dashboard/app.py --server.port=8501 --server.address=0.0.0.0
+
+volumes:
+  postgres_data:
