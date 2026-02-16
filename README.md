@@ -30,6 +30,16 @@ An end-to-end data + ML pipeline.
 
 Path: [data-pipeline-ml](data-pipeline-ml)
 
+### 3) investment-etl-reporting
+A finance-oriented ETL and reporting pipeline.
+- Ingest portfolio price data
+- Compute per-ticker return/risk metrics
+- Store run history and metrics in PostgreSQL
+- Generate markdown performance reports
+- Explore results in a Streamlit dashboard
+
+Path: [investment-etl-reporting](investment-etl-reporting)
+
 ## Tech Stack
 Python, SQL, FastAPI, Streamlit, scikit-learn, PostgreSQL, Docker, Docker Compose.
 
