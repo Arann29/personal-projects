@@ -40,8 +40,18 @@ A finance-oriented ETL and reporting pipeline.
 
 Path: [investment-etl-reporting](investment-etl-reporting)
 
+### 4) sentiment-analysis-nlp
+A sentiment and topic analysis NLP pipeline.
+- Ingest customer feedback/review text data
+- Run transformer-based sentiment classification
+- Extract topic clusters with TF-IDF + KMeans
+- Store analysis runs and document-level outputs in PostgreSQL
+- Visualize sentiment and topic distributions in Streamlit
+
+Path: [sentiment-analysis-nlp](sentiment-analysis-nlp)
+
 ## Tech Stack
-Python, SQL, FastAPI, Streamlit, scikit-learn, PostgreSQL, Docker, Docker Compose.
+Python, SQL, FastAPI, Streamlit, scikit-learn, transformers, PostgreSQL, Docker, Docker Compose.
 
 ## Why this portfolio
 I built these projects to demonstrate production-oriented data work: from ingestion and transformation to model delivery and monitoring.
