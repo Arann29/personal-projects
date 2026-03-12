@@ -3,6 +3,13 @@
 .env.*
 !.env.example
 
+# Secrets / credentials
+credentials.json
+token.json
+secrets.json
+*.pem
+*.key
+
 # Python
 __pycache__/
 *.py[cod]
@@ -22,9 +29,20 @@ Thumbs.db
 tmp/
 temp/
 
+# Local databases / data dumps
+*.db
+*.sqlite
+*.sqlite3
+*.csv
+
 # Model artifacts
 *.pkl
 *.joblib
+trained_model/
 
 # Streamlit and caches
 .streamlit/
+
+# Project-local runtime artifacts
+**/__pycache__/
+**/.pytest_cache/
